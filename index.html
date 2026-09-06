@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Faevu Guide — Roblox</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #050505;
+      --card: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.13);
+      --text: #f5f5f7;
+      --muted: #9b9ba3;
+      --white: #fff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                   "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255,255,255,.15), transparent 35%),
+        radial-gradient(circle at 100% 40%, rgba(255,255,255,.06), transparent 30%),
+        #050505;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 30%,
+          rgba(255,255,255,.025) 50%,
+          transparent 70%
+        );
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 32px, 1050px);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 12px;
+      z-index: 50;
+      width: min(100% - 24px, 1050px);
+      margin: 12px auto 0;
+      padding: 13px 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: rgba(20,20,22,.68);
+      backdrop-filter: blur(25px) saturate(150%);
+      -webkit-backdrop-filter: blur(25px) saturate(150%);
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      box-shadow:
+        0 15px 50px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+    }
+
+    .logo span {
+      color: #a9a9af;
+    }
+
+    .creator-btn {
+      padding: 10px 14px;
+      border-radius: 13px;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+
+      transition: .25s;
+    }
+
+    .creator-btn:hover {
+      background: rgba(255,255,255,.16);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 100px 0 75px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 8px 13px;
+      margin-bottom: 22px;
+
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+
+      background: rgba(255,255,255,.055);
+      backdrop-filter: blur(15px);
+
+      color: #bcbcc2;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ddd;
+      box-shadow: 0 0 12px rgba(255,255,255,.8);
+    }
+
+    h1 {
+      font-size: clamp(48px, 10vw, 92px);
+      line-height: .92;
+      letter-spacing: -5px;
+      font-weight: 900;
+
+      background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #d9d9de 40%,
+        #77777e 100%
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 590px;
+      margin: 25px auto 0;
+
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+      padding: 0 20px;
+
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,.14);
+
+      font-size: 14px;
+      font-weight: 750;
+
+      transition: .25s;
+    }
+
+    .button.primary {
+      color: #050505;
+      background: linear-gradient(135deg, #fff, #a7a7ad);
+      box-shadow: 0 10px 30px rgba(255,255,255,.1);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.06);
+      color: #eee;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(255,255,255,.12);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 30px 0 70px;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title small {
+      display: block;
+      margin-bottom: 8px;
+
+      color: #888890;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      letter-spacing: -1.5px;
+    }
+
+    .section-title p {
+      margin-top: 9px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* CARDS */
+
+    .steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+
+      padding: 24px;
+
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.09),
+        rgba(255,255,255,.035)
+      );
+
+      border: 1px solid var(--border);
+      border-radius: 22px;
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.25),
+        inset 0 1px 0 rgba(255,255,255,.06);
+
+      transition: .3s;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -30%;
+      width: 45%;
+      height: 300%;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.06),
+        transparent
+      );
+
+      transform: rotate(20deg);
+      transition: .6s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.22);
+    }
+
+    .card:hover::after {
+      left: 110%;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 34px;
+      height: 34px;
+
+      margin-bottom: 15px;
+
+      border-radius: 11px;
+
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.12);
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .code-box {
+      display: inline-block;
+
+      margin-top: 14px;
+      padding: 10px 13px;
+
+      border-radius: 11px;
+
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(255,255,255,.1);
+
+      color: #ddd;
+      font-family: monospace;
+      font-size: 13px;
+    }
+
+    /* INFO */
+
+    .info {
+      margin-top: 15px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.1);
+
+      color: #aaaab2;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .info strong {
+      color: #eee;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0 45px;
+
+      text-align: center;
+
+      color: #6f6f76;
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: #aaa;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+      header {
+        top: 8px;
+        margin-top: 8px;
+      }
+
+      .hero {
+        padding: 85px 0 55px;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 19px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .creator-btn {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      faevu <span>guide</span>
+    </div>
+
+    <a
+      class="creator-btn"
+      href="https://create.roblox.com/"
+      target="_blank"
+      rel="noopener"
+    >
+      Creator Hub ↗
+    </a>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Roblox Guide
+        </div>
+
+        <h1>Roblox<br>без лишнего.</h1>
+
+        <p>
+          Здесь ты найдёшь простые инструкции,
+          как создать Game Pass и как активировать
+          подарочный или промокод Roblox.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button primary" href="#gamepass">
+            Создать Game Pass
+          </a>
+
+          <a class="button secondary" href="#code">
+            Активировать код
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- GAMEPASS -->
+
+    <section id="gamepass">
+      <div class="container">
+
+        <div class="section-title">
+          <small>01 / Game Pass</small>
+          <h2>Как создать Game Pass</h2>
+          <p>
+            Game Pass используется для продажи доступа
+            или специальных возможностей внутри твоей игры.
+          </p>
+        </div>
+
+
+        <div class="steps">
+
+          <div class="card">
+            <div class="step-number">01</div>
+
+            <h3>Открой Creator Hub</h3>
+
+            <p>
+              Перейди в официальный Roblox Creator Hub
+              и войди в свой аккаунт.
+            </p>
+
+            <a
+              class="button secondary"
+              style="margin-top:18px"
+              href="https://create.roblox.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              Открыть Creator Hub ↗
+            </a>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">02</div>
+
+            <h3>Выбери свою игру</h3>
+
+            <p>
+              Открой раздел <strong>Creations</strong>,
+              выбери нужный Experience и перейди
+              в управление игрой.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">03</div>
+
+            <h3>Открой Monetization</h3>
+
+            <p>
+              В меню игры найди раздел
+              <strong>Monetization → Passes</strong>.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">04</div>
+
+            <h3>Создай Pass</h3>
+
+            <p>
+              Нажми <strong>Create a Pass</strong>.
+              Добавь изображение, название и описание,
+              затем создай Pass.
+            </p>
+
+            <div class="code-box">
+              Create a Pass
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">05</div>
+
+            <h3>Скопируй ID</h3>
+
+            <p>
+              После создания открой меню Pass
+              <strong>⋯</strong> и выбери
+              <strong>Copy Asset ID</strong>.
+            </p>
+
+            <div class="code-box">
+              Copy Asset ID
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="info">
+          <strong>Важно:</strong>
+          игра должна быть опубликована и доступна,
+          чтобы создавать для неё Pass.
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CODE -->
+
+    <section id="code">
+      <div class="container">
+
+        <div class="section-title">
+          <small>02 / Code</small>
+          <h2>Как применить код</h2>
+          <p>
+            Подарочные карты и некоторые другие Roblox-коды
+            активируются через официальный сайт Roblox.
+          </p>
+        </div>
+
+
+        <div class="steps">
+
+          <div class="card">
+            <div class="step-number">01</div>
+
+            <h3>Открой страницу активации</h3>
+
+            <p>
+              Используй официальный сайт Roblox
+              для активации кода.
+            </p>
+
+            <a
+              class="button primary"
+              style="margin-top:18px"
+              href="https://www.roblox.com/redeem"
+              target="_blank"
+              rel="noopener"
+            >
+              Открыть Roblox Redeem ↗
+            </a>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">02</div>
+
+            <h3>Войди в аккаунт</h3>
+
+            <p>
+              Авторизуйся именно в том Roblox-аккаунте,
+              на который хочешь получить содержимое кода.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">03</div>
+
+            <h3>Введи код</h3>
+
+            <p>
+              Вставь полученный код в специальное поле
+              и нажми кнопку <strong>Redeem</strong>.
+            </p>
+          </div>
+
+
+          <div class="card">
+            <div class="step-number">04</div>
+
+            <h3>Готово</h3>
+
+            <p>
+              Если код действителен, Roblox покажет
+              подтверждение его активации.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="info">
+          <strong>Совет:</strong>
+          используй только официальный сайт Roblox
+          для ввода кодов и данных аккаунта.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container">
+      faevu guide · <strong>Roblox</strong>
+    </div>
+  </footer>
+
+</body>
+</html>
